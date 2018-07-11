@@ -2,6 +2,7 @@ package heap.stark.thrift.test;
 
 import heap.stark.thrift.HelloService;
 import heap.stark.thrift.impl.HelloServiceImpl;
+import org.apache.thrift.protocol.TBinaryProtocol;
 import org.apache.thrift.protocol.TJSONProtocol;
 import org.apache.thrift.server.TServer;
 import org.apache.thrift.server.TSimpleServer;
@@ -14,7 +15,7 @@ public class ThriftServer {
             // 设置服务器端口
             TServerSocket serverTransport = new TServerSocket(9090);
             // 设置二进制协议工厂
-            TJSONProtocol.Factory protocolFactory = new TJSONProtocol.Factory();
+            TBinaryProtocol.Factory protocolFactory = new TBinaryProtocol.Factory();
             // 处理器关联业务实现
             HelloService.Processor<HelloService.Iface> processor = new HelloService.Processor<HelloService.Iface>(
                     new HelloServiceImpl());

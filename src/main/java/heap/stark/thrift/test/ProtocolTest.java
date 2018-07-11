@@ -23,7 +23,8 @@ public class ProtocolTest {
 
         Bean bean = new Bean();
         bean.setB(true);
-        bean.setId32(123);
+        bean.setId32(13);
+        bean.setId8((byte) 4);
         bean.write(protocol);
 
         protocol.writeMessageEnd();
@@ -31,7 +32,8 @@ public class ProtocolTest {
 
         bean = new Bean();
         bean.read(protocol);
-        Assert.assertEquals(bean.id32,123);
+        //byte[] bytes = new byte[1024*1024*1024];
+        Assert.assertEquals(bean.id32,13);
 
     }
 }
